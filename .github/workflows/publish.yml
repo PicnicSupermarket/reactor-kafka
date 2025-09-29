@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-java@8df1039502a15bceb9433410b1a100fbe190c53b # tag=v3
         with:
           distribution: 'temurin'
-          java-version: 8
+          java-version: 11
       - name: interpret version
         id: version
         #we only run the qualifyVersionGha task so that no other console printing can hijack this step's output
@@ -54,7 +54,7 @@ jobs:
       - uses: actions/setup-java@8df1039502a15bceb9433410b1a100fbe190c53b # tag=v3
         with:
           distribution: 'temurin'
-          java-version: 8
+          java-version: 11
       - name: deploy
         env:
           ORG_GRADLE_PROJECT_artifactory_publish_username: ${{secrets.ARTIFACTORY_SNAPSHOT_USERNAME}}
@@ -74,7 +74,7 @@ jobs:
       - uses: actions/setup-java@8df1039502a15bceb9433410b1a100fbe190c53b # tag=v3
         with:
           distribution: 'temurin'
-          java-version: 8
+          java-version: 11
       - name: deploy
         env:
           ORG_GRADLE_PROJECT_artifactory_publish_username: ${{secrets.ARTIFACTORY_USERNAME}}
@@ -96,7 +96,7 @@ jobs:
       - uses: actions/setup-java@8df1039502a15bceb9433410b1a100fbe190c53b # tag=v3
         with:
           distribution: 'temurin'
-          java-version: 8
+          java-version: 11
       - name: deploy
         env:
           ORG_GRADLE_PROJECT_artifactory_publish_username: ${{secrets.ARTIFACTORY_USERNAME}}

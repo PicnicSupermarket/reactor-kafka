@@ -16,6 +16,7 @@
 
 package reactor.kafka.receiver.internals;
 
+import org.apache.kafka.clients.consumer.CloseOptions;
 import org.apache.kafka.clients.consumer.ConsumerRebalanceListener;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.OffsetAndMetadata;
@@ -578,7 +579,7 @@ class ConsumerEventLoop<K, V> implements Sinks.EmitFailureHandler {
                             long timeoutMillis = closeEndTimeMillis - System.currentTimeMillis();
                             if (timeoutMillis < 0)
                                 timeoutMillis = 0;
-                            consumer.close(Duration.ofMillis(timeoutMillis));
+                            consumer.close(CloseOptions.timeout(Duration.ofMillis(timeoutMillis)));
                             consumer = null;
                             break;
                         } catch (WakeupException e) {

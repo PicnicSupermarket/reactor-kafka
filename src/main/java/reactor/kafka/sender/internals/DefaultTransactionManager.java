@@ -63,7 +63,7 @@ class DefaultTransactionManager<K, V> implements TransactionManager {
     public <T> Mono<T> sendOffsets(Map<TopicPartition, OffsetAndMetadata> offsets, String consumerGroupId) {
         return producerMono.flatMap(producer -> Mono.fromRunnable(() -> {
             if (!offsets.isEmpty()) {
-                producer.sendOffsetsToTransaction(offsets, consumerGroupId);
+                producer.sendOffsetsToTransaction(offsets, new ConsumerGroupMetadata(consumerGroupId));
                 DefaultKafkaSender.log.trace("Sent offsets to transaction for producer {}, offsets: {}", senderOptions.transactionalId(), offsets);
             }
         }));

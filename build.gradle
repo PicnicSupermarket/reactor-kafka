@@ -107,7 +107,7 @@ configure(allprojects) { project ->
   apply from: "${rootDir}/gradle/setup.gradle"
   apply from: "${rootDir}/gradle/javadoc.gradle"
 
-  sourceCompatibility = targetCompatibility = 1.8
+  sourceCompatibility = targetCompatibility = 11
 
   [compileJava, compileTestJava]*.options*.compilerArgs = ['-Xlint:all,-options']
 

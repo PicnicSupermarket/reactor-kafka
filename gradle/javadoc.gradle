@@ -34,7 +34,9 @@ javadoc {
     maxMemory = "1024m"
     destinationDir = new File(buildDir, "docs/javadoc")
     source project.sourceSets.main.allJava
-    exclude "**/internals/**"
+    // XXX: Java 11 Javadoc fails if included files reference excluded files.
+    // Review how to properly exclude packages.
+    //exclude "**/internals/**"
     doFirst {
       classpath = files(project.sourceSets.main.compileClasspath)
     }
