@@ -43,7 +43,7 @@ public class ReceiverRecord<K, V> extends ConsumerRecord<K, V> {
                 consumerRecord.key(),
                 consumerRecord.value(),
                 consumerRecord.headers(),
-                Optional.empty());
+                consumerRecord.leaderEpoch());
         this.receiverOffset = receiverOffset;
     }
 
